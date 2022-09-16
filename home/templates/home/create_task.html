@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                font-size: 1.5rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                text-align: left;
+                background-color: #6200EA;
+                width: 70%;
+                padding-left: 30%;
+                padding-top: 6%
+            }
+
+            .create-task-form {
+                text-align: center;
+                padding-top: 3%;
+                border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+                width: 55%;
+                height: 85%;
+                background-color: white;
+            }
+
+            .form-group {
+                padding-bottom: 5%;
+            }
+
+            .task-entry {
+                width: 80%;
+                height: 7%;
+            }
+
+            .description {
+                width: 80%
+            }
+
+            .submit {
+                color: #fff;
+                background-color: #3f6ad8;
+                border-color: #3f6ad8;
+                width: 35%;
+                height: 10%;
+            }
+
+            .cancel {
+                color: #fff;
+                background-color: red;
+                border-color: red;
+                width: 35%;
+                height: 10%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="create-task-form">
+            <form action="{% url 'validate_form' %}">
+                <div class="form-group">
+                    <label for="task">Tarefa</label><br>
+                    <input type="text" class="task-entry" name="task" style="text-align: center">
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptiom">Descrição</label><br>
+                    <textarea class="description" name="description" rows="3" style="text-align: center"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Data</label><br>
+                    <input type="datetime-local" class="date" name="date" style="width: 35%">
+                </div>
+                
+                <div class="form-group" style="padding-top: 2%">
+                    <input type="submit" class="submit" value="Criar">
+            </form>
+            <form action="{% url 'index' %}">
+                <input type="submit" class="cancel" value="Cancelar">
+            </form>
+                {% if messages %}
+                    <ul class="alert alert-danger" style="list-style: none;">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                </div>
+            
+        </div>
+    </body>
+
+</html>
