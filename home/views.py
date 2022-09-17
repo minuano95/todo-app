@@ -21,7 +21,7 @@ def edit_task(request):
             task.save()
 
         tasks = Task.objects.all()
-        return render(request, 'home/index.html', context={'tasks': tasks})
+        return render(request, 'home/edit_task.html', context={'tasks': tasks})
 
     else:
         messages.error(request, 'Erro! Confira as informações.')
